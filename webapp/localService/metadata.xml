@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZAPP_FIORI_ALUNO99_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Cadastro" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cpf"/>
+                </Key>
+                <Property Name="Cpf" Type="Edm.String" Nullable="false" MaxLength="11" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Nome" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Sobrenome" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DataNascimento" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="150" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Telefone" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZAPP_FIORI_ALUNO99_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="CadastroSet" EntityType="ZAPP_FIORI_ALUNO99_SRV.Cadastro" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://191.209.21.126:9222/sap/opu/odata/sap/ZAPP_FIORI_ALUNO99_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://191.209.21.126:9222/sap/opu/odata/sap/ZAPP_FIORI_ALUNO99_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
