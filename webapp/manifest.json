@@ -56,7 +56,7 @@
           "bundleName": "AppFioriAluno99.appfiorialuno99.i18n.i18n"
         }
       },
-      "": {
+      "oModelSet": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {}

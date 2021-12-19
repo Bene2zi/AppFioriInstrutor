@@ -1,1 +1,9 @@
 /* Enter your custom styles here */
+
+.myClass .bold {
+    font-weight: bold!important;
+}
+
+.myClass .zFilterBarBaixa{
+	width: 3rem;
+}

@@ -1,0 +1,85 @@
+<core:FragmentDefinition xmlns="sap.m"
+						 xmlns:l="sap.ui.layout" 
+						 xmlns:f="sap.ui.layout.form"
+						 xmlns:u="sap.ui.unified" 
+						 xmlns:core="sap.ui.core"
+						 xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+	<Dialog id="_IDGenDialog1" draggable="false" 
+			title="{i18n>cadastro}"
+			resizable="false" 
+			class="sapUiResponsiveContentPadding sapUiSizeCompact myClass"
+			afterClose="onAfterClose"
+			verticalScrolling="true">
+			
+		<f:Form id="formBaixaEstoque" editable="true" >
+			<f:layout>
+				<f:ResponsiveGridLayout id="_IDGenResponsiveGridLayout1" 
+										labelSpanL="12" 
+										labelSpanM="12" 
+										labelSpanS="12"
+										adjustLabelSpan="false" 
+										emptySpanXL="0" 
+										emptySpanL="0"
+										emptySpanM="0" 
+										emptySpanS="0" 
+										columnsXL="1" 
+										columnsL="1"
+										columnsM="1" 
+										singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer id="_IDGenFormContainer1">
+					<f:formElements>
+												
+						<f:FormElement id="_IDGenFormElement2" label="{i18n>cpf}" >
+							<f:fields> 
+								<Input id="_IDGenInput2" required="true" value="{oCadastroModelLine>/Cpf}"
+                                        maxLength="11" enabled="{oFieldScreen>/btnEnabled}"/>
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id="_IDGenFormElement3" label="{i18n>nome}">
+							<f:fields>
+								<Input id="_IDGenInput3"  value="{oCadastroModelLine>/Nome}"  />
+							</f:fields>
+						</f:FormElement>
+						 
+						<f:FormElement id="_IDGenFormElement4" label="{i18n>sobrenome}">
+							<f:fields> 
+								<Input id="_IDGenInput4"  value="{oCadastroModelLine>/Sobrenome}"  />
+							</f:fields>
+						</f:FormElement>
+
+						<f:FormElement id="_IDGenFormElement5" label="{i18n>datanasc}">
+							<f:fields>
+                                <DatePicker id="_IDGenDatePicker1" displayFormat="dd/MM/yyyy" 
+                                                valueFormat="ddMMyyyy"
+										        dateValue="{path: 'oCadastroModelLine>/DataNascimento',formatOptions: {pattern: 'yyyyMMdd', UTC: true}}" 
+                                                placeholder="{i18n>datanasc}" />
+							</f:fields>
+						</f:FormElement>
+
+						<f:FormElement id="_IDGenFormElement6" label="{i18n>email}" class="zFilterBarBaixa">
+							<f:fields>
+								  <Input id="_IDGenInput5" value="{oCadastroModelLine>/Email}"  />
+							</f:fields>
+						</f:FormElement>
+						
+						<f:FormElement id="_IDGenFormElement7" label="{i18n>telefone}">
+							<f:fields>
+                                <Input id="_IDGenInput6" value="{oCadastroModelLine>/Telefone}" maxLength="20"/>
+                                <!-- value="{path:'oCadastroModelLine>/Telefone', type:'sap.ui.model.type.Integer'}"/>-->
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<buttons>
+			<Button id="_IDGenButton1" text="Cancelar" press="onCancelar" class="zFilterBarBaixa" type="Reject" icon="sap-icon://sys-cancel"/>
+			<Button id="idBtnBaixa" text="Confirmar"     icon="sap-icon://accept" press="onConfirmar" type="Emphasized" 
+					enabled="{= ${oCadastroModelLine>/Cpf} !== '' ? true : false }"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
