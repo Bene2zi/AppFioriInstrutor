@@ -10,6 +10,7 @@
     xmlns:f="sap.f" 
     xmlns:fb="sap.ui.comp.filterbar"
 	xmlns:vm="sap.ui.comp.variants"
+    
 >
     <Shell id="shell">
         <App id="app">
@@ -57,7 +58,7 @@
 		</f:header>
 		<!-- DynamicPage Content -->
 		<f:content>
-			<Table id="idCadastroTable" inset="false" items="{oCadastroModel>/Cadastro}" mode="SingleSelectLeft">
+			<Table id="idCadastroTable" inset="false" items="{oCadastroModel>/CadastroSet}" mode="SingleSelectLeft">
 				<headerToolbar>
 					<OverflowToolbar id="otbSubheader">
 						<Title id="_IDGenTitle1" text="{i18n>tabtitle}({= ${oCadastroModel>/CadastroSet}.length})" level="H2"/>
@@ -70,6 +71,12 @@
 							visible="true"/>
 						<Button id="cancelButton" type="Reject" press="onRemove" tooltip="{i18n>remover}" icon="sap-icon://sys-minus"
 							visible="true"/>
+                            <!-- botão de salvar-->
+                        <Button id="_IDGenButton4"  type="Emphasized"         press="onSalvar" tooltip="{i18n>salvar}" icon="sap-icon://save"
+							visible="true"/>
+                        <Button id="_IDGenButton6"  type="Emphasized"         press="showPDF" tooltip="{i18n>pdf}" icon="sap-icon://pdf-attachment"
+							visible="true"/>
+                       
 					</OverflowToolbar>
 				</headerToolbar>
 				<columns>
@@ -93,7 +100,7 @@
 					</Column>
 				</columns>
 				<items>
-					<ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+					<ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle" type="Navigation" press="onDependentes">
 						<cells>
 							<Text id="_IDGenText7"   text="{oCadastroModel>Cpf}"/>
                             <Text id="_IDGenText9"   text="{oCadastroModel>Nome}" />
@@ -104,14 +111,30 @@
 						</cells>
 					</ColumnListItem>
 				</items>
-			</Table>
+			</Table> 
 		</f:content>
+        <!--
+            <PDFViewer id="idPDFViewer" 
+					   displayType="Auto"
+					   source="{oPdfModel>/Source}" 
+					   title="{oPdfModel>/Title}"
+				       height="90%" 
+				       showDownloadButton="false">
+				<layoutData>
+					<FlexItemData id="_IDGenFlexItemData1" growFactor="1" />
+				</layoutData>
+			</PDFViewer>
+        -->
+        
 		<f:footer>
 			<OverflowToolbar id="_IDGenOverflowToolbar1">
-				<Button id="_IDGenButton1" icon="sap-icon://alert" text="{= ${oMessage>/}.length }" visible="{= ${oMessage>/}.length > 0 }" press="onMessagePopoverPress"/>
-				<ToolbarSpacer id="_IDGenToolbarSpacer2"/>
-				<Button id="_IDGenButton2" type="Accept" text="{i18n>gravar}" press="onSave" enabled="{= ${oCadastroModel>/CadastroSet}.length || ${oCadastroModel>/aExcluded}.length ? true : false}"/>
-				<Button id="_IDGenButton3" type="Reject" text="{i18n>cancelar}" press="onCancel"/>
+				<Button id="_IDGenButton1" icon="sap-icon://alert" text="Salvar" visible="true" press="onSalvar"/>
+				
+                <ToolbarSpacer id="_IDGenToolbarSpacer2"/>
+				
+                <Button id="_IDGenButton2" type="Accept" text="{i18n>gravar}" press="onSave" enabled="{= ${oCadastroModel>/CadastroSet}.length || ${oCadastroModel>/aExcluded}.length ? true : false}"/>
+				
+                <Button id="_IDGenButton3" type="Reject" text="{i18n>cancelar}" press="onCancel"/>
 			</OverflowToolbar>
 		</f:footer>
 	</f:DynamicPage>
