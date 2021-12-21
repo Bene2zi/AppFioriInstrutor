@@ -174,17 +174,7 @@ sap.ui.define([
                 }
             },
 
-            showPDF: function(oEvent){
-                let oModel = this.getView().getModel('oCadastroModel').getObject( this.getView().byId('idCadastroTable').getSelectedContextPaths()[0])
-                var opdfViewer = new PDFViewer();
-                this.getView().addDependent(opdfViewer);
-                var sServiceURL = this.getOwnerComponent().getModel('oCadastroModel').sServiceUrl;
-                var sSource = sServiceURL + "/DependentesPdfSet('" + oModel.Cpf + "')/$value";
-                opdfViewer.setSource(sSource);
-                opdfViewer.setTitle( oModel.Cpf + " PDF");
-                opdfViewer.open();	
-            },
-
+/*
             onDependentes : function(oEvent){
                 let aSelectedContexts = this.getView().byId('idCadastroTable').getSelectedContextPaths();
                 
@@ -244,21 +234,24 @@ sap.ui.define([
                 this._dialogCadastroDependentes.close()
             },
 
-
+             */
             onSalvar : function(oEvent){
 
-                let oModelSend = {Cpf : '12345678902', 
+                let oModelSend = { Cpf : '12345678902',
                 Nome : 'Joao', 
                 Sobrenome : 'Fernandes', 
-                DataNascimento : new Date(), 
-                CadastroDependenteSet = []}
+                DataNascimento : new Date()}
+                /*, 
+                CadastroDependentesSet : [] }
 
-                oModelSend.CadastroDependenteSet.push({
+                oModelSend.CadastroDependentesSet.push({
                     Cpf: '12346578902', 
                     CpfDependente: '32165498701', 
                     Nome: 'Juliano', 
                     Sobrenome:'Fernandes', 
-                    DataNascimento: new Date() })
+                    DataNascimento: new Date(),
+                    NotasDependentesSet: [{CpfDependente: '32165498701', Material:'1',Nota: '12'}, {CpfDependente: '32165498701', Material:'2',Nota: '50'}] })
+                 */
 
                 this.getOwnerComponent().getModel('oCadastroModel').create('/CadastroSet',oModelSend,{
                     success:function(oData,oResponse){
@@ -271,6 +264,17 @@ sap.ui.define([
                 })	
             },
 
+           
+            showPDF: function(oEvent){
+                let oModel = this.getView().getModel('oCadastroModel').getObject( this.getView().byId('idCadastroTable').getSelectedContextPaths()[0])
+                var opdfViewer = new PDFViewer();
+                this.getView().addDependent(opdfViewer);
+                var sServiceURL = this.getOwnerComponent().getModel('oCadastroModel').sServiceUrl;
+                var sSource = sServiceURL + "/DependentesPdfSet('" + oModel.Cpf + "')/$value";
+                opdfViewer.setSource(sSource);
+                opdfViewer.setTitle( oModel.Cpf + " PDF");
+                opdfViewer.open();	
+            },
             //Final
         });
     });

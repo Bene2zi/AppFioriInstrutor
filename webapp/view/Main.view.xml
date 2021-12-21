@@ -9,16 +9,15 @@
     xmlns:un="sap.ui.unified"
     xmlns:f="sap.f" 
     xmlns:fb="sap.ui.comp.filterbar"
-	xmlns:vm="sap.ui.comp.variants"
+	xmlns:vm="sap.ui.comp.variants">
     
->
     <Shell id="shell">
         <App id="app">
             <pages>
                 <f:DynamicPage id="page" 
                                headerExpanded="{/headerExpanded}" 
                                class="sapUiSizeCompact myClass" 
-                               showFooter="{oFieldScreen>/btnsVisible}">
+                               showFooter="true">
 		<f:header>
 			<f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="false">
 				<f:content>
@@ -74,6 +73,7 @@
                             <!-- botão de salvar-->
                         <Button id="_IDGenButton4"  type="Emphasized"         press="onSalvar" tooltip="{i18n>salvar}" icon="sap-icon://save"
 							visible="true"/>
+                            <!-- Botão PDF-->
                         <Button id="_IDGenButton6"  type="Emphasized"         press="showPDF" tooltip="{i18n>pdf}" icon="sap-icon://pdf-attachment"
 							visible="true"/>
                        
